@@ -15,7 +15,7 @@
 		05A5948226B6669700AA8F02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05A5948026B6669700AA8F02 /* LaunchScreen.storyboard */; };
 		05A5948B26B6708000AA8F02 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A5948A26B6708000AA8F02 /* MainViewController.swift */; };
 		05A5948F26B6716000AA8F02 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A5948E26B6716000AA8F02 /* NetworkingService.swift */; };
-		05A5949726B67A6100AA8F02 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A5949626B67A6100AA8F02 /* AlertService.swift */; };
+		05A5949726B67A6100AA8F02 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A5949626B67A6100AA8F02 /* MessageService.swift */; };
 		05A5949926B67F7D00AA8F02 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A5949826B67F7D00AA8F02 /* Model.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +30,7 @@
 		05A5948326B6669700AA8F02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05A5948A26B6708000AA8F02 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		05A5948E26B6716000AA8F02 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
-		05A5949626B67A6100AA8F02 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
+		05A5949626B67A6100AA8F02 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		05A5949826B67F7D00AA8F02 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,7 +73,7 @@
 				05A5947926B6669400AA8F02 /* ViewController.swift */,
 				05A5948A26B6708000AA8F02 /* MainViewController.swift */,
 				05A5948E26B6716000AA8F02 /* NetworkingService.swift */,
-				05A5949626B67A6100AA8F02 /* AlertService.swift */,
+				05A5949626B67A6100AA8F02 /* MessageService.swift */,
 				05A5949826B67F7D00AA8F02 /* Model.swift */,
 			);
 			path = MyJsonLogin;
@@ -155,7 +155,7 @@
 				05A5949926B67F7D00AA8F02 /* Model.swift in Sources */,
 				05A5947826B6669400AA8F02 /* SceneDelegate.swift in Sources */,
 				05A5948B26B6708000AA8F02 /* MainViewController.swift in Sources */,
-				05A5949726B67A6100AA8F02 /* AlertService.swift in Sources */,
+				05A5949726B67A6100AA8F02 /* MessageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

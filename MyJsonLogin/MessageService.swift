@@ -13,7 +13,7 @@ class AlertService {
         
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "Dismissaaaaa", style: .cancel, handler: nil)
+        let action = UIAlertAction(title: "Dismis", style: .cancel, handler: nil)
         
         alert.addAction(action)
         
@@ -22,13 +22,27 @@ class AlertService {
 }
 
 
-class Service {
+class DeleteService {
     
     func alert(message: String) -> UIAlertController {
         
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+        let action = UIAlertAction(title: "Delete", style: .destructive, handler: nil)
+        
+        alert.addAction(action)
+        
+        return alert
+    }
+}
+
+class LogoutService {
+    
+    func alert(message: String) -> UIAlertController {
+        
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "LogOut Ok?", style: .default, handler: nil)
         
         alert.addAction(action)
         
