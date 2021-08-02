@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    
     let alertService = AlertService()
     let networkingService = NetworkingService()
     
@@ -32,8 +33,8 @@ class ViewController: UIViewController {
         networkingService.request(endpoint: "Auth/Login", loginObject: logininfo) { [weak self] (result) in
             switch result {
             case.success(let userinfo): self?.performSegue(withIdentifier: "loginSegue", sender: userinfo)
-            case.failure(let error):
-                guard let alert = self?.alertService.alert(message: error.localizedDescription) else { return }
+            case.failure(let NetworkingError):
+                guard let alert = self?.alertService.alert(message: NetworkingError.localizedDescription) else { return }
                 self?.present(alert, animated: true)
             }
         }

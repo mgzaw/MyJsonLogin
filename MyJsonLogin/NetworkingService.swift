@@ -19,7 +19,8 @@ class NetworkingService {
                  loginObject: LoginInfo,
                  completion: @escaping (Result<UserInfo, Error>) -> Void) {
         guard let url = URL(string: baseUrl + endpoint) else {
-            completion(.failure(NetworkingError.badUrl))
+            let NE = NetworkingError(statusCode: -1, message: "Bad URL")
+            completion(.failure(NE))
             return
         }
         
@@ -29,7 +30,9 @@ class NetworkingService {
             let loginData = try JSONEncoder().encode(loginObject)
             request.httpBody = loginData
         } catch {
-            completion(.failure(NetworkingError.badEncoding))
+            let NE = NetworkingError(statusCode: -1, message: "Bad Encoing")
+            completion(.failure(NE))
+            return
         }
         
         request.httpMethod = "POST"
@@ -39,38 +42,46 @@ class NetworkingService {
         let task = session.dataTask(with: request) { (data, URLResponse, Error) in
             DispatchQueue.main.async {
                 guard let unwrapprdResponse = URLResponse as? HTTPURLResponse else {
-                    completion(.failure(NetworkingError.badResponse))
+                    let NE = NetworkingError(statusCode: -1, message: "Bad Response")
+                    completion(.failure(NE))
                     return
                 }
                 
                 print(unwrapprdResponse.statusCode)
                 
                 switch unwrapprdResponse.statusCode {
-                
+
                 case 200 ..< 300:
                     print("success")
-                    
+
                 default:
-                    print("failure")
-                }
-                
-                if let unwrappedEror = Error {
-                    completion(.failure(unwrappedEror))
+//                    print("failure")
+                    let NE = NetworkingError(statusCode: unwrapprdResponse.statusCode, message: "123456")
+                    completion(.failure(NE))
                     return
                 }
+                
+//                if let unwrappedError = Error {
+//                    completion(.failure(unwrappedError))
+//                    return
+//                }
                 
                 if let unwrappedData = data {
                     do {
                         let json = try JSONSerialization.jsonObject(with: unwrappedData, options: [])
-                        
+                        print(json)
                         if let userinfo = try? JSONDecoder().decode(UserInfo.self, from: unwrappedData) {
                             completion(.success(userinfo))
                         } else {
                             let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: unwrappedData)
-                            completion(.failure(errorResponse))
+                            let NE = NetworkingError(statusCode: unwrapprdResponse.statusCode, message: "errorResponse.errorDescription!")
+                            completion(.failure(NE))
+                            return
                         }
                     } catch {
-                        completion(.failure(NetworkingError.badJson))
+                        let NE = NetworkingError(statusCode: unwrapprdResponse.statusCode, message: "Bad Jeson")
+                        completion(.failure(NE))
+                        return
                     }
                 }
             }
@@ -79,10 +90,14 @@ class NetworkingService {
     }
 }
 
-enum NetworkingError: Error {
-    case badUrl
-    case badResponse
-    case badEncoding
-    case badJson
-    case badPassword
+struct NetworkingError: Error {
+//    case badUrl
+//    case badResponse
+//    case badEncoding
+//    case badJson
+//    case badPassword
+    
+    let statusCode: Int
+    let message: String
+    
 }
